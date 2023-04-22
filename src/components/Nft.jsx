@@ -6,6 +6,11 @@ const Nft = ({
   nftTotalBalance,
   nftFloorPrice,
   nftImage,
+  discord,
+  webUrl,
+  btcPrice,
+  ethPrice,
+  coinApi,
 }) => {
   return (
     <div className="mt-24">
@@ -15,6 +20,11 @@ const Nft = ({
         nftTotalBalance={nftTotalBalance}
         nftFloorPrice={nftFloorPrice}
         nftImage={nftImage}
+        discord={discord}
+        webUrl={webUrl}
+        btcPrice={btcPrice}
+        ethPrice={ethPrice}
+        coinApi={coinApi}
       />
     </div>
   );
