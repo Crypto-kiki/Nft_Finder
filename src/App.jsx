@@ -18,7 +18,6 @@ function App() {
   const [nfts, setNfts] = useState([]);
   const [discord, setDiscord] = useState("");
   const [webUrl, setWebUrl] = useState("");
-
   const [nftName, setNftName] = useState("");
   const [nftContract, setNftContract] = useState("");
   const [nftTotalBalance, setNftTotalBalance] = useState("");
@@ -51,7 +50,7 @@ function App() {
 
         const nfts = response.contracts;
         if (nfts.length > 0) {
-          setNftName(nfts[0].name);
+          setNftName(nfts[0].opensea.collectionName);
           setNftContract(nfts[0].address);
           setNftTotalBalance(nfts[0].totalBalance);
           setNftFloorPrice(nfts[0].opensea.floorPrice);
@@ -60,6 +59,7 @@ function App() {
           setWebUrl(nfts[0].opensea.externalUrl);
         }
       })
+
       .catch((err) => console.error(err));
   }, [account]);
 
@@ -76,6 +76,8 @@ function App() {
       console.error(error);
     }
   };
+
+  const totalAsset = () => {};
 
   useEffect(() => {
     coinApi();
@@ -108,14 +110,14 @@ function App() {
             <div className="flex flex-row justify-between items-center">
               <div className="flex flex-row items-center text-lg">
                 <div className="flex">
-                  <TbCoinBitcoin className="inline w-7 h-7 object-cover" />{" "}
+                  <TbCoinBitcoin className="inline w-7 h-7 object-cover mr-2" />{" "}
                   {btcPrice.toLocaleString()}원
                 </div>
                 <div className="mr-20 ml-10">
                   <FaEthereum className="inline w-5 h-5 object-cover" />{" "}
                   {ethPrice.toLocaleString()}원
                 </div>
-                <div>총 자산:</div>
+                <div>총 자산:원</div>
               </div>
               <div>
                 {account.substring(0, 4)}...
@@ -130,13 +132,13 @@ function App() {
             </div>
           </header>
 
-          <div>
-            <div className="flex flex-col justify-center items-center">
+          <main>
+            <div className="flex flex-col justify-center items-center min-w-[1600px]">
               {nfts.length > 0 ? (
                 nfts.map((nft) => (
                   <Nft
                     key={nft.address}
-                    nftName={nft.name}
+                    nftName={nft.opensea.collectionName}
                     nftContract={nft.address}
                     nftTotalBalance={nft.totalBalance}
                     nftFloorPrice={nft.opensea.floorPrice}
@@ -154,17 +156,17 @@ function App() {
                 </div>
               )}
             </div>
-          </div>
+          </main>
         </div>
       ) : (
-        <div className="bg-red-100 min-h-screen flex justify-center items-center">
+        <main className="bg-red-100 min-h-screen flex justify-center items-center">
           <button className="btn-style" onClick={onClickAccount}>
             <img
               className="w-12"
               src={`${process.env.PUBLIC_URL}/images/metamask.png`}
             />
           </button>
-        </div>
+        </main>
       )}
     </>
   );

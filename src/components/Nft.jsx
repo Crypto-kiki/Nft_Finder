@@ -13,7 +13,7 @@ const Nft = ({
   coinApi,
 }) => {
   return (
-    <div className="mt-24">
+    <div className="mt-24 w-2/3">
       <NftCard
         nftName={nftName}
         nftContract={nftContract}
