@@ -6,10 +6,11 @@ import Nft from "./components/Nft";
 import axios from "axios";
 import { TbCoinBitcoin } from "react-icons/tb";
 import { FaEthereum } from "react-icons/fa";
+import Main from "./components/Main";
 
 function App() {
   const settings = {
-    apiKey: "t6V7kZSDHIWrkNIwlP7Q2Ptc6NZs8JmR",
+    apiKey: process.env.Alchemy_API,
     network: Network.ETH_MAINNET,
   };
 
@@ -102,9 +103,9 @@ function App() {
   return (
     <>
       {account ? (
-        <div className="bg-gray-700 text-gray-300 min-h-screen pb-40 box-border">
-          <header className="sticky top-0 bg-gradient-to-r from-gray-400 w-full h-24 px-12 flex flex-row justify-between items-center">
-            <a href="#" className="text-3xl font-bold text-gray-700">
+        <div className="bg-gradient-to-r from-gray-500 via-gray-700 to-gray-500 text-gray-300 min-h-screen pb-40 box-border">
+          <header className="sticky top-0 bg-gradient-to-r from-gray-500 via-gray-700 to-gray-500 w-full h-24 px-12 flex flex-row justify-between items-center border-gray-800 border-b-2">
+            <a href="#" className="text-3xl font-bold text-gray-300">
               NFT Overview
             </a>
             <div className="flex flex-row justify-between items-center">
@@ -159,13 +160,10 @@ function App() {
           </main>
         </div>
       ) : (
-        <main className="bg-red-100 min-h-screen flex justify-center items-center">
-          <button className="btn-style" onClick={onClickAccount}>
-            <img
-              className="w-12"
-              src={`${process.env.PUBLIC_URL}/images/metamask.png`}
-            />
-          </button>
+        <main className="w-screen bg">
+          <div className="relative w-full h-screen overflow-hidden">
+            <Main onClickAccount={onClickAccount} />
+          </div>
         </main>
       )}
     </>

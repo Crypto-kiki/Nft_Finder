@@ -17,8 +17,8 @@ const NftCard = ({
   // 실시간 코인 가격 가져오기
 
   return (
-    <div className="font-bold text-2xl text-gray-300 flex flex-row border border-gray-500 p-8 rounded-xl justify-start">
-      <div className="rounded-lg">
+    <div className="font-bold text-2xl text-gray-300 flex flex-row border border-gray-400 p-8 rounded-xl justify-start shadow-md shadow-gray-400">
+      <div className="rounded-xl overflow-hidden">
         <img src={nftImage} className="w-80 h-full object-cover" />
       </div>
       <div className="ml-14 w-2/3">
@@ -39,7 +39,7 @@ const NftCard = ({
             </div>
           </>
         ) : (
-          <>0</>
+          <div>None</div>
         )}
 
         <div className="flex flex-row justify-end items-center">
