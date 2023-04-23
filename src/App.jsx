@@ -81,7 +81,10 @@ function App() {
   const totalAsset = () => {};
 
   useEffect(() => {
-    coinApi();
+    const interval = setInterval(() => {
+      coinApi();
+    }, 1000);
+    return () => clearInterval(interval);
   }, []);
 
   const onClickAccount = async () => {

@@ -19,7 +19,7 @@ const NftCard = ({
   return (
     <div className="font-bold text-2xl text-gray-300 flex flex-row border border-gray-400 p-8 rounded-xl justify-start shadow-md shadow-gray-400">
       <div className="rounded-xl overflow-hidden">
-        <img src={nftImage} className="w-80 h-full object-cover" />
+        <img src={nftImage} className="w-96 h-full object-cover" />
       </div>
       <div className="ml-14 w-2/3">
         <div className="text-gray-400">Collection Name</div>
